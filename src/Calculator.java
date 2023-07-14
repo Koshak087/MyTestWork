@@ -11,24 +11,24 @@ public class Calculator {
 
 
     public static String calc(String inp) throws InputException {
-        inp = inp.replaceAll(" ", ""); // Удаляем все пробелы
+        inp = inp.replaceAll(" ", "");
 
 
         if(inp.isEmpty()){
             throw new InputException("Ошибка ввода! Пустая входная строка.");
         }
 
-        /* Ищем знак операции и отталкиваясь от него определяем левое и правое число */
+
         ArrayList<String> inputs = new ArrayList();
         for(int i = 0; i < inp.length(); ++i){
-            if( isOperation(inp.charAt(i)) ){ // Ищем знак операции и делим строку на 3 элемента
-                inputs.add(inp.substring(0,i));   // Левое число
-                inputs.add(inp.substring(i,i+1)); // Знак операции
-                inputs.add(inp.substring(i+1));   // Правое число
+            if( isOperation(inp.charAt(i)) ){
+                inputs.add(inp.substring(0,i));
+                inputs.add(inp.substring(i,i+1));
+                inputs.add(inp.substring(i+1));
                 break;
             }
         }
-        /* Проверка некоректный ввод */
+
         if(inputs.isEmpty()){
             throw new InputException("Ошибка ввода! Не найдена допустимая операция.");
         }else if(inputs.size() == 1){
@@ -98,6 +98,8 @@ public class Calculator {
                 default:
                     throw new InputException("Ошибка ввода! Неожиданный оператор '" + inputs.get(1) + "'.");
             }
+            int b = (int)Math.round(result);
+            result = b;
 
             if(isValidNumber(result)){
                 return isRoman ? IsRoman.toRoman(result).toString() :
