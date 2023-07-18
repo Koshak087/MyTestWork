@@ -6,7 +6,7 @@ public class Calculator {
         return c == '+' || c == '-' ||c == '*' || c == '/';
     }
     public static boolean isValidNumber(int num){
-        return num>=1 && num<=10;
+        return num>=1 && num<=100;
     }
 
 
