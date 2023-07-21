@@ -5,6 +5,9 @@ public class Calculator {
     public static boolean isOperation(char c){
         return c == '+' || c == '-' ||c == '*' || c == '/';
     }
+    public static boolean isValidInput(int num){
+        return num>=1 && num<=10;
+    }
     public static boolean isValidNumber(int num){
         return num>=1 && num<=100;
     }
@@ -71,9 +74,9 @@ public class Calculator {
         }
 
 
-        if (!isValidNumber(left) || !isValidNumber(right)) {
+        if (!isValidInput(left) || !isValidInput(right)) {
 
-            throw new InputException("Ошибка ввода! Недопустимое значение'" + (isValidNumber(right) ?
+            throw new InputException("Ошибка ввода! Недопустимое значение'" + (isValidInput(right) ?
                     (isRoman ? IsRoman.toRoman(left): left) :
                     (isRoman ? IsRoman.toRoman(right): right)
             ) + "'.");
